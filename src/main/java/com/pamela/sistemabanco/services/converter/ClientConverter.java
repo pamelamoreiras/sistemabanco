@@ -5,6 +5,8 @@ import com.pamela.sistemabanco.services.dtos.client.ClientDetailsResponse;
 import com.pamela.sistemabanco.services.dtos.client.ClientServiceRequest;
 import com.pamela.sistemabanco.services.dtos.client.ClientServiceResponse;
 
+import java.util.stream.Collectors;
+
 public class ClientConverter {
 
     public static Client clientRequestToClient(final ClientServiceRequest clientRequest) {
@@ -28,7 +30,7 @@ public class ClientConverter {
                 .name(client.getName())
                 .document(client.getDocument())
                 .address(client.getAddress())
-                .accounts(client.getAccounts())
+                .accounts(client.getAccounts().stream().map(AccountConverter::accountRequestToAccountResponse).toList())
                 .build();
     }
 }

@@ -1,5 +1,7 @@
 package com.pamela.sistemabanco.controllers.dtos.client;
 
+import com.pamela.sistemabanco.controllers.dtos.account.AccountControllerResponse;
+import com.pamela.sistemabanco.controllers.dtos.account.AccountToClientDetailsController;
 import com.pamela.sistemabanco.models.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,5 +19,5 @@ public class ClientDetailsControllerResponse {
     private String name;
     private String document;
     private String address;
-    private List<Account> accounts;
+    private List<AccountToClientDetailsController> accounts;
 }

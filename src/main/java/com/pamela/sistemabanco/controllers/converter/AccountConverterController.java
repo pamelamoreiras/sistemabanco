@@ -2,10 +2,12 @@ package com.pamela.sistemabanco.controllers.converter;
 
 import com.pamela.sistemabanco.controllers.dtos.account.AccountControllerRequest;
 import com.pamela.sistemabanco.controllers.dtos.account.AccountControllerResponse;
+import com.pamela.sistemabanco.controllers.dtos.account.AccountToClientDetailsController;
 import com.pamela.sistemabanco.controllers.dtos.account.HistoryControllerResponse;
 import com.pamela.sistemabanco.controllers.dtos.account.TransactionControllerRequest;
 import com.pamela.sistemabanco.services.dtos.account.AccountServiceRequest;
 import com.pamela.sistemabanco.services.dtos.account.AccountServiceResponse;
+import com.pamela.sistemabanco.services.dtos.account.AccountToClientDetailsService;
 import com.pamela.sistemabanco.services.dtos.account.HistoryResponse;
 import com.pamela.sistemabanco.services.dtos.account.TransactionRequest;
 
@@ -22,6 +24,13 @@ public class AccountConverterController {
         return AccountControllerResponse.builder()
                 .name(accountServiceResponse.getName())
                 .document(accountServiceResponse.getDocument())
+                .numberAccount(accountServiceResponse.getNumberAccount())
+                .balance(accountServiceResponse.getBalance())
+                .build();
+    }
+
+    public static AccountToClientDetailsController accountToClientDetailsServiceToAccountDetailsControllerResponse(final AccountToClientDetailsService accountServiceResponse) {
+        return AccountToClientDetailsController.builder()
                 .numberAccount(accountServiceResponse.getNumberAccount())
                 .balance(accountServiceResponse.getBalance())
                 .build();

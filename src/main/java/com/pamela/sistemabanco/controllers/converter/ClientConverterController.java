@@ -3,6 +3,7 @@ package com.pamela.sistemabanco.controllers.converter;
 import com.pamela.sistemabanco.controllers.dtos.client.ClientControllerRequest;
 import com.pamela.sistemabanco.controllers.dtos.client.ClientControllerResponse;
 import com.pamela.sistemabanco.controllers.dtos.client.ClientDetailsControllerResponse;
+import com.pamela.sistemabanco.services.converter.AccountConverter;
 import com.pamela.sistemabanco.services.dtos.client.ClientDetailsResponse;
 import com.pamela.sistemabanco.services.dtos.client.ClientServiceRequest;
 import com.pamela.sistemabanco.services.dtos.client.ClientServiceResponse;
@@ -30,7 +31,7 @@ public class ClientConverterController {
                 .name(client.getName())
                 .document(client.getDocument())
                 .address(client.getAddress())
-                .accounts(client.getAccounts())
+                .accounts(client.getAccounts().stream().map(AccountConverterController::accountToClientDetailsServiceToAccountDetailsControllerResponse).toList())
                 .build();
     }
 }

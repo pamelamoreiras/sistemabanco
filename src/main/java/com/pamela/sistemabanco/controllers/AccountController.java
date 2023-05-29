@@ -6,6 +6,7 @@ import com.pamela.sistemabanco.controllers.dtos.account.AccountControllerRespons
 import com.pamela.sistemabanco.controllers.dtos.account.HistoryControllerResponse;
 import com.pamela.sistemabanco.controllers.dtos.account.TransactionControllerRequest;
 import com.pamela.sistemabanco.services.AccountService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping
-    public ResponseEntity<AccountControllerResponse> createAccount(@RequestBody final AccountControllerRequest accountControllerRequest) {
+    public ResponseEntity<AccountControllerResponse> createAccount(@RequestBody @Valid final AccountControllerRequest accountControllerRequest) {
         final var convertAccountRequest = AccountConverterController.accountControllerToAccountRequest(accountControllerRequest);
 
         final var accountToCreate = accountService.createAccount(convertAccountRequest);
@@ -44,7 +45,7 @@ public class AccountController {
     }
 
     @PostMapping("/deposit")
-    public ResponseEntity<Void> deposit(@RequestBody final TransactionControllerRequest transactionControllerRequest) {
+    public ResponseEntity<Void> deposit(@RequestBody @Valid final TransactionControllerRequest transactionControllerRequest) {
         final var convertAccountRequest = AccountConverterController.transactionControllerRequestToTransactionRequest(transactionControllerRequest);
 
         accountService.deposit(convertAccountRequest);
@@ -53,7 +54,7 @@ public class AccountController {
     }
 
     @PostMapping("/withdraw")
-    public ResponseEntity<Void> withdraw(@RequestBody final TransactionControllerRequest transactionControllerRequest) {
+    public ResponseEntity<Void> withdraw(@RequestBody @Valid final TransactionControllerRequest transactionControllerRequest) {
         final var convertAccountRequest = AccountConverterController.transactionControllerRequestToTransactionRequest(transactionControllerRequest);
 
         accountService.withdraw(convertAccountRequest);

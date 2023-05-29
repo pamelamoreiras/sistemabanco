@@ -5,6 +5,7 @@ import com.pamela.sistemabanco.controllers.dtos.client.ClientControllerRequest;
 import com.pamela.sistemabanco.controllers.dtos.client.ClientControllerResponse;
 import com.pamela.sistemabanco.controllers.dtos.client.ClientDetailsControllerResponse;
 import com.pamela.sistemabanco.services.ClientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class ClientController{
     private final ClientService clientService;
 
     @PostMapping
-    public ResponseEntity<ClientControllerResponse> createClient(@RequestBody final ClientControllerRequest clientControllerRequest) {
+    public ResponseEntity<ClientControllerResponse> createClient(@RequestBody @Valid final ClientControllerRequest clientControllerRequest) {
         final var convertClientRequest = ClientConverterController.clientRequestToClientControllerRequest(clientControllerRequest);
 
         final var clientToCreate = clientService.create(convertClientRequest);
@@ -46,7 +47,7 @@ public class ClientController{
     }
 
     @PutMapping("/{document}")
-    public ResponseEntity<ClientControllerResponse> updateClient (@PathVariable final String document, @RequestBody final ClientControllerRequest clientControllerRequest) {
+    public ResponseEntity<ClientControllerResponse> updateClient (@PathVariable final String document, @RequestBody  @Valid final ClientControllerRequest clientControllerRequest) {
         final var convertClientRequest = ClientConverterController.clientRequestToClientControllerRequest(clientControllerRequest);
 
         final var clientToUpdate = clientService.update(document, convertClientRequest);

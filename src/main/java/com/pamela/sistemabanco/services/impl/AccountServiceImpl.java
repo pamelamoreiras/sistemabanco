@@ -13,6 +13,7 @@ import com.pamela.sistemabanco.services.dtos.account.TransactionRequest;
 import com.pamela.sistemabanco.services.exceptions.account.AccountAlreadyExistsException;
 import com.pamela.sistemabanco.services.exceptions.account.AccountNotFoundException;
 import com.pamela.sistemabanco.services.exceptions.account.InsufficientFundsException;
+import com.pamela.sistemabanco.services.exceptions.account.MaximumNumberOfAccountsCreatedException;
 import com.pamela.sistemabanco.services.exceptions.client.ClientNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -52,8 +53,13 @@ public class AccountServiceImpl implements AccountService {
                     .balance(BigDecimal.ZERO)
                     .build();
 
-            accounts.add(createdAccount);
-            client.setAccounts(accounts);
+            if (accounts.size() < 2) {
+                accounts.add(createdAccount);
+                client.setAccounts(accounts);
+
+            } else {
+                throw new MaximumNumberOfAccountsCreatedException("Cliente já possui número máximo de contas.");
+            }
 
             this.clientRepository.save(client);
 

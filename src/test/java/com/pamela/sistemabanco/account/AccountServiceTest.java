@@ -58,7 +58,7 @@ public class AccountServiceTest {
         final var actualResult = accountService.createAccount(accountRequest);
 
         Assertions.assertNotNull(actualResult);
-        Assertions.assertEquals(expectAccount.getAccountNumber(), actualResult.getNumberAccount());
+        Assertions.assertEquals(expectAccount.getAccountNumber(), actualResult.getAccountNumber());
     }
 
     @Test
@@ -89,7 +89,7 @@ public class AccountServiceTest {
         Mockito.when(accountRepository.findAccountByAccountNumber(expectAccount.getAccountNumber())).thenReturn(expectAccount);
 
         accountService.deposit(TransactionRequest.builder()
-                        .numberAccount(expectAccount.getAccountNumber())
+                        .accountNumber(expectAccount.getAccountNumber())
                         .amount(BigDecimal.TEN)
                 .build());
     }
@@ -107,7 +107,7 @@ public class AccountServiceTest {
         Mockito.when(accountRepository.findAccountByAccountNumber(expectAccount.getAccountNumber())).thenReturn(expectAccount);
 
         accountService.withdraw(TransactionRequest.builder()
-                .numberAccount(expectAccount.getAccountNumber())
+                .accountNumber(expectAccount.getAccountNumber())
                 .amount(BigDecimal.ONE)
                 .build());
     }

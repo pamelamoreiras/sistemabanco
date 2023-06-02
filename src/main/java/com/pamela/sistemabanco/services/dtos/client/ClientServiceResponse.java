@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ClientServiceResponse {
 
+    private Long id;
     private String name;
     private String document;
     private String address;

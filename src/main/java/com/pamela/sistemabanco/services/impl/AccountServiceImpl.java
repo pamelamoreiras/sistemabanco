@@ -65,7 +65,7 @@ public class AccountServiceImpl implements AccountService {
 
             return AccountServiceResponse.builder()
                     .name(client.getName())
-                    .numberAccount(createdAccount.getAccountNumber())
+                    .accountNumber(createdAccount.getAccountNumber())
                     .document(client.getDocument())
                     .balance(createdAccount.getBalance())
                     .build();
@@ -138,6 +138,6 @@ public class AccountServiceImpl implements AccountService {
 
 
     private Account getAccountByNumber(final TransactionRequest depositRequest) {
-        return this.accountRepository.findAccountByAccountNumber(depositRequest.getNumberAccount());
+        return this.accountRepository.findAccountByAccountNumber(depositRequest.getAccountNumber());
     }
 }

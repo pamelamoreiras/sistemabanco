@@ -19,6 +19,7 @@ public class ClientConverter {
 
     public static ClientServiceResponse clientToClientResponse(final Client client) {
         return ClientServiceResponse.builder()
+                .id(client.getId())
                 .name(client.getName())
                 .document(client.getDocument())
                 .address(client.getAddress())
@@ -27,6 +28,7 @@ public class ClientConverter {
 
     public static ClientDetailsResponse clientToClientDetails(final Client client) {
         return ClientDetailsResponse.builder()
+                .id(client.getId())
                 .name(client.getName())
                 .document(client.getDocument())
                 .address(client.getAddress())

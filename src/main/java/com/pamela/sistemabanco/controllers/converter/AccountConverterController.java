@@ -24,14 +24,14 @@ public class AccountConverterController {
         return AccountControllerResponse.builder()
                 .name(accountServiceResponse.getName())
                 .document(accountServiceResponse.getDocument())
-                .numberAccount(accountServiceResponse.getNumberAccount())
+                .numberAccount(accountServiceResponse.getAccountNumber())
                 .balance(accountServiceResponse.getBalance())
                 .build();
     }
 
     public static AccountToClientDetailsController accountToClientDetailsServiceToAccountDetailsControllerResponse(final AccountToClientDetailsService accountServiceResponse) {
         return AccountToClientDetailsController.builder()
-                .numberAccount(accountServiceResponse.getNumberAccount())
+                .numberAccount(accountServiceResponse.getAccountNumber())
                 .balance(accountServiceResponse.getBalance())
                 .build();
     }
@@ -39,7 +39,7 @@ public class AccountConverterController {
     public static TransactionRequest transactionControllerRequestToTransactionRequest(final TransactionControllerRequest transactionRequest) {
         return TransactionRequest.builder()
                 .amount(transactionRequest.getAmount())
-                .numberAccount(transactionRequest.getNumberAccount())
+                .accountNumber(transactionRequest.getNumberAccount())
                 .build();
     }
 

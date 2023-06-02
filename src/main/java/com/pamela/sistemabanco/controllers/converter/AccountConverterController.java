@@ -22,16 +22,18 @@ public class AccountConverterController {
 
     public static AccountControllerResponse accountServiceResponseToAccountControllerResponse(final AccountServiceResponse accountServiceResponse) {
         return AccountControllerResponse.builder()
+                .id(accountServiceResponse.getId())
                 .name(accountServiceResponse.getName())
                 .document(accountServiceResponse.getDocument())
-                .numberAccount(accountServiceResponse.getAccountNumber())
+                .accountNumber(accountServiceResponse.getAccountNumber())
                 .balance(accountServiceResponse.getBalance())
                 .build();
     }
 
     public static AccountToClientDetailsController accountToClientDetailsServiceToAccountDetailsControllerResponse(final AccountToClientDetailsService accountServiceResponse) {
         return AccountToClientDetailsController.builder()
-                .numberAccount(accountServiceResponse.getAccountNumber())
+                .id(accountServiceResponse.getId())
+                .accountNumber(accountServiceResponse.getAccountNumber())
                 .balance(accountServiceResponse.getBalance())
                 .build();
     }
@@ -39,12 +41,13 @@ public class AccountConverterController {
     public static TransactionRequest transactionControllerRequestToTransactionRequest(final TransactionControllerRequest transactionRequest) {
         return TransactionRequest.builder()
                 .amount(transactionRequest.getAmount())
-                .accountNumber(transactionRequest.getNumberAccount())
+                .accountNumber(transactionRequest.getAccountNumber())
                 .build();
     }
 
     public static HistoryControllerResponse historyResponseToHistoryControllerResponse(final HistoryResponse historyResponse) {
         return HistoryControllerResponse.builder()
+                .id(historyResponse.getId())
                 .date(historyResponse.getDate())
                 .amount(historyResponse.getAmount())
                 .build();

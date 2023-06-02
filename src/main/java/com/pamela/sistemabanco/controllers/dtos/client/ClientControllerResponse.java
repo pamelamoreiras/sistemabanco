@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ClientControllerResponse {
+
+    private Long id;
     private String name;
     private String document;
     private String address;

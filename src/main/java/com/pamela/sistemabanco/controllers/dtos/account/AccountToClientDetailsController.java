@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @Builder
 public class AccountToClientDetailsController {
 
-    private Long numberAccount;
+    private Long id;
+    private Long accountNumber;
     private BigDecimal balance;
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class ClientDetailsControllerResponse {
 
+    private Long id;
     private String name;
     private String document;
     private String address;

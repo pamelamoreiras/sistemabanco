@@ -20,6 +20,7 @@ public class ClientConverterController {
 
     public static ClientControllerResponse clientResponseToClientControllerResponse(final ClientServiceResponse clientResponse) {
         return ClientControllerResponse.builder()
+                .id(clientResponse.getId())
                 .name(clientResponse.getName())
                 .document(clientResponse.getDocument())
                 .address(clientResponse.getAddress())
@@ -28,6 +29,7 @@ public class ClientConverterController {
 
     public static ClientDetailsControllerResponse clientToClientDetails(final ClientDetailsResponse client) {
         return ClientDetailsControllerResponse.builder()
+                .id(client.getId())
                 .name(client.getName())
                 .document(client.getDocument())
                 .address(client.getAddress())

@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class HistoryControllerResponse {
+
+    private Long id;
     private LocalDateTime date;
     private BigDecimal amount;
 }

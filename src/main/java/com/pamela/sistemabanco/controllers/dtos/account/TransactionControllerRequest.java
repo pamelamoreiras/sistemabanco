@@ -10,5 +10,5 @@ import java.math.BigDecimal;
 public class TransactionControllerRequest {
 
     private BigDecimal amount;
-    private Long numberAccount;
+    private Long accountNumber;
 }

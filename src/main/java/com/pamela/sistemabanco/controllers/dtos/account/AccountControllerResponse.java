@@ -9,8 +9,9 @@ import java.math.BigDecimal;
 @Builder
 public class AccountControllerResponse {
 
+    private Long id;
     private String name;
     private String document;
-    private Long numberAccount;
+    private Long accountNumber;
     private BigDecimal balance;
 }

@@ -76,9 +76,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public void deleteAccount(final Long accountNumber) {
+    public void deleteAccount(final Long id) {
 
-        accountRepository.deleteByAccountNumber(accountNumber);
+        accountRepository.deleteById(id);
     }
 
     @Override

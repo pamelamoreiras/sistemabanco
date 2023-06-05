@@ -69,11 +69,11 @@ public class AccountServiceTest {
                 .accountNumber(2409L)
                 .build();
 
-        Mockito.doNothing().when(accountRepository).deleteByAccountNumber(accountRequest.getAccountNumber());
+        Mockito.doNothing().when(accountRepository).deleteById(accountRequest.getAccountNumber());
 
         accountService.deleteAccount(accountRequest.getAccountNumber());
 
-        Mockito.verify(accountRepository,Mockito.times(1)).deleteByAccountNumber(accountRequest.getAccountNumber());
+        Mockito.verify(accountRepository,Mockito.times(1)).deleteById(accountRequest.getAccountNumber());
     }
 
     @Test

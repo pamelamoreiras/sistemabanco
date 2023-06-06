@@ -21,6 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -94,10 +97,15 @@ public class AccountServiceImpl implements AccountService {
 
         accountRepository.save(account);
 
+        ZoneId timeZone = ZoneId.of("America/Sao_Paulo");
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(timeZone);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+        String formattedTimestamp = zonedDateTime.format(formatter);
+
         historyRepository.save(TransactionHistory.builder()
                 .account(account)
                 .amount(depositRequest.getAmount())
-                .timestamp(LocalDateTime.now())
+                .timestamp(formattedTimestamp)
                 .build());
     }
 
@@ -115,10 +123,15 @@ public class AccountServiceImpl implements AccountService {
 
             accountRepository.save(account);
 
+            ZoneId timeZone = ZoneId.of("America/Sao_Paulo");
+            ZonedDateTime zonedDateTime = ZonedDateTime.now(timeZone);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+            String formattedTimestamp = zonedDateTime.format(formatter);
+
             historyRepository.save(TransactionHistory.builder()
                     .account(account)
                     .amount(withdrawRequest.getAmount().negate())
-                    .timestamp(LocalDateTime.now())
+                    .timestamp(formattedTimestamp)
                     .build());
         } else {
             throw new InsufficientFundsException("Saldo Insuficiente");

@@ -32,7 +32,7 @@ public class TransactionHistory {
     private Long id;
 
     @Column(name = "times_tamp")
-    private LocalDateTime timestamp;
+    private String timestamp;
 
     @Column(name = "amount")
     private BigDecimal amount;

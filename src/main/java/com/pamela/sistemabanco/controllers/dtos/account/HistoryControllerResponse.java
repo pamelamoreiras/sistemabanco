@@ -11,6 +11,6 @@ import java.time.LocalDateTime;
 public class HistoryControllerResponse {
 
     private Long id;
-    private LocalDateTime date;
+    private String date;
     private BigDecimal amount;
 }

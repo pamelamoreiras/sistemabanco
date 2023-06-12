@@ -20,7 +20,7 @@ O backend do projeto foi desenvolvido utilizando as seguintes tecnologias:
 - A parte de frontend foi desenvolvida utilizando Angular Material, um conjunto de componentes visuais prontos para uso, que facilita o desenvolvimento da interface do usuário.
 
 ## Repositório
-O código-fonte deste projeto está disponível no seguinte repositório: Link do Repositório
+O código-fonte deste projeto está disponível no seguinte repositório: (https://github.com/pamelamoreiras/sistemabanco-front)
 
 ## Como executar o projeto
 Para executar o projeto, siga as instruções abaixo:
